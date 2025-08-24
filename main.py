@@ -9,11 +9,16 @@ import argparse
 EXAMPLE = "example"
 BASE_DIR = "..."
 
+from common.constants import Constants
+from common.config import Config
 
-class Note():
+
+class Note:
 
     def __init__(self):
-        self.time = datetime.datetime.now()
+        self.const = Constants()
+        self.conf = Config()
+        # self.time = datetime.datetime.now()
 
     # can make methods that will be passed into the
     # default fields in the add_argument
@@ -50,15 +55,18 @@ class Note():
         # very basic setup
         # base = '/home/shaman/artefactum/notes'
         # path = f'%s/tmp' % base
-        path = '/tmp/notes'
+        # path = '/tmp/notes'
         name = 'tmp'
         time = datetime.datetime.now()
         timestamp = time.strftime('-%d-%m-%Y-%I:%M%p')
-        file = f'%s/%s%s' % (path, name, timestamp)
+        file = f'%s%s%s' % (self.const.tmp_dir, name, timestamp)
 
         # basic execution
         cmd = f'nvim %s' % file
         os.system(cmd)
+
+        # print(self.conf.get_contents())
+        # print(self.const.notes_dir)
 
 
 if __name__ == '__main__':
