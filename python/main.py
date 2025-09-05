@@ -9,15 +9,13 @@ import argparse
 EXAMPLE = "example"
 BASE_DIR = "..."
 
-from common.constants import Constants
-from common.config import Config
+from core import Core
 
 
 class Note:
 
     def __init__(self):
-        self.const = Constants()
-        self.conf = Config()
+        self.core = Core()
         # self.time = datetime.datetime.now()
 
     # can make methods that will be passed into the
@@ -59,14 +57,15 @@ class Note:
         name = 'tmp'
         time = datetime.datetime.now()
         timestamp = time.strftime('-%d-%m-%Y-%I:%M%p')
-        file = f'%s%s%s' % (self.const.tmp_dir, name, timestamp)
+        file = f'%s%s%s' % (self.core.const.tmp_dir, name, timestamp)
 
         # basic execution
         cmd = f'nvim %s' % file
-        os.system(cmd)
+        exit_code = os.system(cmd)
+        print(exit_code)
 
-        # print(self.conf.get_contents())
-        # print(self.const.notes_dir)
+        # print(self.core.conf.get_contents())
+        # print(self.core.const.notes_dir)
 
 
 if __name__ == '__main__':

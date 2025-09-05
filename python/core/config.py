@@ -1,8 +1,8 @@
 # base
 from os.path import join
 
-# common
-from common.core import program_dir
+# utils
+from utils import program_dir
 
 
 class Config:
