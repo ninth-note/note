@@ -13,7 +13,7 @@ class Config:
 
     @property
     def path(self): 
-        return join(program_dir(), 'config')
+        return join(program_dir(), "config")
 
 
     def get_contents(self):
@@ -22,7 +22,7 @@ class Config:
             for line in file.read().splitlines():
                 if '=' not in line:
                     continue
-                key, value = line.split('=', 1)
+                key, value = line.split("=", 1)
                 contents[key] = value
         return contents
 
