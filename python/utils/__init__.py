@@ -1,5 +1,4 @@
 from os.path import dirname, abspath
 
-def program_dir():
-    return dirname(dirname(dirname(abspath(__file__))))
+PROGRAM_DIR = dirname(dirname(dirname(abspath(__file__))))
 

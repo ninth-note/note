@@ -5,7 +5,8 @@ class History:
         self.core = core
 
         # contents
-        self.path = core.const.history_path
+        self.path = core.const.locations.history_path
+        self.size = core.const.settings.history_size
 
     
     def load(self):

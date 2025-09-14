@@ -57,7 +57,7 @@ class Note:
         name = 'tmp'
         time = datetime.datetime.now()
         timestamp = time.strftime('-%d-%m-%Y-%I:%M%p')
-        file = f'%s%s%s' % (self.core.const.tmp_dir, name, timestamp)
+        file = f'%s%s%s' % (self.core.const.locations.tmp_dir, name, timestamp)
 
         # basic execution
         cmd = f'nvim %s' % file
@@ -65,7 +65,7 @@ class Note:
         print(exit_code)
 
         # print(self.core.conf.get_contents())
-        # print(self.core.const.notes_dir)
+        # print(self.core.const.locations.notes_dir)
 
 
 if __name__ == '__main__':
