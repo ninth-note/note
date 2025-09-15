@@ -10,12 +10,14 @@ EXAMPLE = "example"
 BASE_DIR = "..."
 
 from core import Core
+from controller import Controller
 
 
 class Note:
 
     def __init__(self):
-        self.core = Core()
+        self.core = Core() # REMOVE LATER
+        self.controller = Controller() # SHOULD HANDLE ALL OPERATIONS
         # self.time = datetime.datetime.now()
 
     # can make methods that will be passed into the
@@ -51,6 +53,7 @@ class Note:
         # print(dir(argumnets))
 
         # very basic setup
+        self.controller.setup()
         # base = '/home/shaman/artefactum/notes'
         # path = f'%s/tmp' % base
         # path = '/tmp/notes'
@@ -63,9 +66,6 @@ class Note:
         cmd = f'nvim %s' % file
         exit_code = os.system(cmd)
         print(exit_code)
-
-        # print(self.core.conf.get_contents())
-        # print(self.core.const.locations.notes_dir)
 
 
 if __name__ == '__main__':

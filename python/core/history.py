@@ -20,15 +20,12 @@ class History:
         data = self.load()
         return data[index]
 
-
     def get_latest(self):
         data = self.load()
         return data[0]
 
-
     def scan(self, pattern):
        pass 
-
 
     def save(self, entry):
         data = self.load()
@@ -37,16 +34,9 @@ class History:
             data.remove(entry)
 
         data.insert(0, entry)
-
-        # Keep only the first 5 but later 100 lines
-        # actually make this a setting in the conf
-        data = data[:100]
+        data = data[:self.size]
 
         with open(self.path, "w") as file:
             for item in data:
                 file.write(item + "\n")
-
-        
-
-
 
