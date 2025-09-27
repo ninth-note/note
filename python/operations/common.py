@@ -1,3 +1,7 @@
+# base
+from dataclasses import dataclass
+from typing import Any
+
 # core
 from core import Core
 
@@ -10,22 +14,15 @@ class Operation:
     def __init__(self):
         self.core = Core()
 
-
-    def run(self):
-        pass
-
-
-
-class SetupDirectories(Operation):
-
-    def run(self):
-        locations = self.core.const.locations
-        setup_directory(locations.notes_dir)
-        setup_directory(locations.tmp_dir)
+    def run(self, instructions = None):
+        raise NotImplementedError()
 
 
 
-class CreateTmpNote(Operation):
+@dataclass
+class Result:
 
-    def run(self):
-        pass
+    exit_code: int = 0          # 0 = success
+    output: Any = None          # optional payload
+    error: str | None = None    # error message if failed
+

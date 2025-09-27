@@ -3,10 +3,10 @@ from os import environ
 from os.path import join
 from pathlib import Path
 
-# config exceptions
+# exceptions
 from core.config import ConfigError
 
-# utils
+# utility
 from utils import PROGRAM_DIR
 
 

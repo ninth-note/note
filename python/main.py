@@ -10,14 +10,14 @@ EXAMPLE = "example"
 BASE_DIR = "..."
 
 from core import Core
-from controller import Controller
+from executor import Executor
 
 
 class Note:
 
     def __init__(self):
         self.core = Core() # REMOVE LATER
-        self.controller = Controller() # SHOULD HANDLE ALL OPERATIONS
+        self.executor = Executor() # SHOULD HANDLE ALL OPERATIONS
         # self.time = datetime.datetime.now()
 
     # can make methods that will be passed into the
@@ -48,15 +48,12 @@ class Note:
         return args
 
 
-    def execute(self):
+    def start(self):
         arguments = self._retrieve_cli_arguments()
         # print(dir(argumnets))
 
         # very basic setup
-        self.controller.setup()
-        # base = '/home/shaman/artefactum/notes'
-        # path = f'%s/tmp' % base
-        # path = '/tmp/notes'
+        self.executor.setup()
         name = 'tmp'
         time = datetime.datetime.now()
         timestamp = time.strftime('-%d-%m-%Y-%I:%M%p')
@@ -70,5 +67,5 @@ class Note:
 
 if __name__ == '__main__':
     notes = Note()
-    notes.execute()
+    notes.start()
 

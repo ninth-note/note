@@ -2,7 +2,7 @@
 from os import environ
 from os.path import join
 
-# config exceptions
+# exceptions
 from core.config import ConfigError
 
 

@@ -6,7 +6,7 @@ from os.path import join
 from core.constants.locations import Locations
 from core.constants.settings import Settings
 
-# utils
+# utility
 from utils import PROGRAM_DIR
 
 
