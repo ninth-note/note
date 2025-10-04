@@ -2,7 +2,7 @@
 from configparser import ConfigParser as Parser
 from os.path import join
 
-# utils
+# utility
 from utils import PROGRAM_DIR
 
 

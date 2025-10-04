@@ -14,7 +14,7 @@ class Operation:
     def __init__(self):
         self.core = Core()
 
-    def run(self, instructions = None):
+    def run(self, context, instructions = None):
         raise NotImplementedError()
 
 
@@ -24,5 +24,12 @@ class Result:
 
     exit_code: int = 0          # 0 = success
     output: Any = None          # optional payload
+    key: str = None             # optional payload key
     error: str | None = None    # error message if failed
+
+
+
+class OperationError(Exception):
+    """Custom exception for operation errors"""
+    pass
 
