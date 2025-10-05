@@ -1,13 +1,6 @@
-# base
-from os import environ
-from os.path import join
-
 # constants
 from core.constants.locations import Locations
 from core.constants.settings import Settings
-
-# utility
-from utils import PROGRAM_DIR
 
 
 class Constants:
