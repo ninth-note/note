@@ -1,4 +1,5 @@
 # base
+from functools import cached_property
 from os import environ
 from os.path import join
 from pathlib import Path
@@ -27,7 +28,7 @@ class Locations:
         self.history_path = join(PROGRAM_DIR, "history")
 
 
-    @property
+    @cached_property
     def notes_dir(self):
         try: 
             return self.conf.get_section_param("locations", "notes")

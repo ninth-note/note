@@ -2,7 +2,7 @@
 from datetime import datetime
 
 # common
-from operations.common import Operation, Result
+from operations.common import Operation, Result, Payload
 
 
 class CreateNote(Operation):
@@ -31,7 +31,11 @@ class CreateTmpNote(Operation):
         file = self._prepare_file()
         try:
             open(file, "x").close()
+        except FileExistsError as e:
+            return Result(exit_code=1, error=str(e))
         except OSError as e:
             return Result(exit_code=1, error=str(e))
-        return Result(output=file, key="file")
+        else:
+            payload = Payload(binding="file", value=file)
+            return Result(payload=payload)
 

@@ -2,13 +2,13 @@
 from os import system
 
 # common
-from operations.common import Operation, Result
+from operations.common import Operation, Result, Payload
 
 
 class EditWithNvim(Operation):
 
     def run(self, context, instructions = None):
-        path = context["file"]
+        path = context.file
         cmd = f'nvim %s' % path
         try:
             exit_code = system(cmd)

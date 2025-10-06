@@ -5,7 +5,7 @@ import os
 from utils.filesystem import setup_directory
 
 # common
-from operations.common import Operation, Result
+from operations.common import Operation, Result, Payload
 
 
 class SetupCoreDirectories(Operation):

@@ -20,11 +20,18 @@ class Operation:
 
 
 @dataclass
+class Payload:
+
+    binding: str = None
+    value: Any = None
+
+
+
+@dataclass
 class Result:
 
     exit_code: int = 0          # 0 = success
-    output: Any = None          # optional payload
-    key: str = None             # optional payload key
+    payload: Payload = None     # optional payload
     error: str | None = None    # error message if failed
 
 

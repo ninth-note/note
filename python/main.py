@@ -29,7 +29,7 @@ class Note:
         parser.add_argument("-a", help="... {0}".
                             format(EXAMPLE), default=EXAMPLE)
         args = parser.parse_args()
-        print(args)
+        # print(args)
         return args
 
     def start(self):

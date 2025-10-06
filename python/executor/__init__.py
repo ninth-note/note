@@ -1,3 +1,6 @@
+# base
+from dataclasses import dataclass
+
 # operations
 from operations import operations
 
@@ -5,8 +8,7 @@ from operations import operations
 class Executor:
 
     def __init__(self):
-        # context: dict[str, object]
-        self.context = {}
+        self.context = Context()
 
 
     # plan: list[tuple[str, dict]]
@@ -25,9 +27,22 @@ class Executor:
         return operation.run(self.context, instructions)
 
     def _update_context(self, result):
-        if result.key and result.output:
-            self.context[result.key] = result.output
+        if result.payload:
+            attr_name = result.payload.binding
+            value = result.payload.value
+            if hasattr(self.context, attr_name):
+                setattr(self.context, attr_name, value)
+            else:
+                msg = f"Context has no attribute '{attr_name}'"
+                raise AttributeError(msg)
 
     def _handle_failure(self, operation_name, result):
         print(f"{operation_name} failed with {result.exit_code}: {result.error}")
+
+
+
+@dataclass
+class Context:
+
+    file: str = None
 
